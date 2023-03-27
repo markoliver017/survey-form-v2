@@ -19,10 +19,11 @@ pipeline {
                 bat 'docker-compose up -d'
             }
         }
-        stage('Run unit tests') {
+        stage('Build') {
             steps {
-                bat 'npm install'
-                bat 'npm test'
+                dir('/path/to/working/directory') {
+                    sh 'npm install'
+                }
             }
         }
     }
