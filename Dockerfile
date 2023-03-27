@@ -1,7 +1,7 @@
 # FROM node:latest
-FROM node:14.4.0-alpine3.12
+FROM node:16.13.1-alpine
 
-RUN mkdir -p /var/www/app
+RUN apk add -U subversion
 
 WORKDIR /var/www/app
 

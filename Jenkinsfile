@@ -1,16 +1,13 @@
 pipeline {
-    agent any
-    environment {
-        DOCKER_REGISTRY_CREDENTIALS = credentials('Docker Credentials')
-    }
+    agent { dockerfile true }
     stages {
-        stage('Docker login') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: "Docker Credentials", usernameVariable: 'mv081623', passwordVariable: 'StyleX@017')]) {
-                    bat "docker login -u $mv081623 -p $StyleX@017"
-                }
-            }
-        }
+        // stage('Docker login') {
+        //     steps {
+        //         withCredentials([usernamePassword(credentialsId: "Docker Credentials", usernameVariable: 'mv081623', passwordVariable: 'StyleX@017')]) {
+        //             bat "docker login -u $mv081623 -p $StyleX@017"
+        //         }
+        //     }
+        // }
         stage('Docker build and push') {
             steps {
                 bat 'docker-compose build'
